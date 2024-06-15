@@ -9,5 +9,6 @@ namespace CabInvoiceGenerator
     public interface ICabInvoice
     {
         double calculateFare(double distace, double time);
+        double multipleRides(int rides,double[] distace, double[] time);
     }
 }
