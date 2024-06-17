@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,5 +26,14 @@ namespace CabInvoiceNunitTesting
             double actuval = cabInvoice.multipleRides(rides,distance, time);
             Assert.AreEqual(expected, actuval);
         }
+        [Test]
+        [TestCase(2, new double[] { 2.0, 4.0 }, new double[] { 20.0, 40.0 }, "-Total Number Of Rides :- 2 -TotalFare :- 100 -Average Fare Price :-50")]
+        public void totalInvoiceGeneratorTesting(int rides, double[] distance, double[] time, string expected)
+        {
+            ICabInvoice cabInvoice = new CabInvoiceImpl();
+            string actual = cabInvoice.totalInvoiceGenerator(rides, distance, time);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

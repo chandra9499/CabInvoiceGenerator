@@ -17,7 +17,6 @@ namespace CabInvoiceGenerator
             double totalFare = (time < 30)? (distace * costPerKilometer): (distace * costPerKilometer) + (time * costPerMinute);
             return (totalFare < minFare) ? minFare : totalFare;               
         }
-
         public double multipleRides(int rides,double[] distace, double[] time)
         {
             double totalCost = 0;
@@ -28,6 +27,17 @@ namespace CabInvoiceGenerator
                  i++;
             }
             return totalCost;
+        }
+        public string totalInvoiceGenerator(int rides, double[] distace, double[] time)
+        {
+            double totalCost = 0;
+            int i = 0;
+            while (i < rides)
+            {
+                totalCost += calculateFare(distace[i], time[i]);
+                i++;
+            }
+            return $"-Total Number Of Rides :- {rides} -TotalFare :- {totalCost} -Average Fare Price :-{totalCost/rides}";
         }
     }
 }

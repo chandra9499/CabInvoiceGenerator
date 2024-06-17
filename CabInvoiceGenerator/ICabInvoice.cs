@@ -10,5 +10,6 @@ namespace CabInvoiceGenerator
     {
         double calculateFare(double distace, double time);
         double multipleRides(int rides,double[] distace, double[] time);
+        string totalInvoiceGenerator(int rides, double[] distace, double[] time);
     }
 }
