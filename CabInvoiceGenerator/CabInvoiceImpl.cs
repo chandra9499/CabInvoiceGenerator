@@ -39,5 +39,19 @@ namespace CabInvoiceGenerator
             }
             return $"-Total Number Of Rides :- {rides} -TotalFare :- {totalCost} -Average Fare Price :-{totalCost/rides}";
         }
+
+        public string invoiceService(int userId)
+        {
+            List<Rides> invoice= new List<Rides>();
+            invoice.Add(new Rides(101, new double[] { 10.0, 10.0 }, new double[] { 6.0, 5.0 }, 2));
+            invoice.Add(new Rides(102, new double[] { 11.0, 15.0,10.0 }, new double[] { 16.0, 15.0,11.0 }, 3));
+
+            foreach(Rides ride in invoice)
+            {
+                if(userId ==ride.userId)    
+                 return totalInvoiceGenerator(ride.noOfrides, ride.distance, ride.time);
+            }
+            return null;
+        }
     }
 }
