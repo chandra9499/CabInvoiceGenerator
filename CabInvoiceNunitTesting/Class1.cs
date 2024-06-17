@@ -34,6 +34,14 @@ namespace CabInvoiceNunitTesting
             string actual = cabInvoice.totalInvoiceGenerator(rides, distance, time);
             Assert.AreEqual(expected, actual);
         }
+        [Test]
+        [TestCase(101,"-Total Number Of Rides :- 2 -TotalFare :- 200 -Average Fare Price :-100")]
+        public void invoiceServiceTesting(int userId,string expected)
+        {
+            ICabInvoice cabInvoice = new CabInvoiceImpl();
+            string actual = cabInvoice.invoiceService(userId);
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
