@@ -19,6 +19,14 @@ namespace CabInvoiceNunitTesting
             double actuval = cabInvoice.calculateFare(distance, time);
             Assert.AreEqual(expected, actuval);
         }
+        [TestCase(3.0, 20.0, 45.0)]
+        [TestCase(5.0, 40.0, 155.0)]
+        public void calculateFareForPremiumTesting(double distance, double time, double expected)
+        {
+            ICabInvoice cabInvoice = new CabInvoiceImpl();
+            double actuval = cabInvoice.calculateFareForPremium(distance, time);
+            Assert.AreEqual(expected, actuval);
+        }
         [TestCase(2,new double[]{ 2.0,4.0}, new double[] { 20.0,40.0},100.0)]
         public void multipleRidesTesting(int rides,double[] distance, double[] time, double expected)
         {

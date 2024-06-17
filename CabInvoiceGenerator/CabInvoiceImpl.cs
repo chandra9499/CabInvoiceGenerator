@@ -12,10 +12,18 @@ namespace CabInvoiceGenerator
         private const double costPerKilometer = 10.0;
         private const double costPerMinute = 1.0;
         private const double minFare = 5.0;
+        private const double costPerKilometerForPremium = 15.0;
+        private const double costPerMinuteForPremium = 2.0;
+        private const double minFareForPremium = 20.0;
         public double calculateFare(double distace, double time)
         {
             double totalFare = (time < 30)? (distace * costPerKilometer): (distace * costPerKilometer) + (time * costPerMinute);
             return (totalFare < minFare) ? minFare : totalFare;               
+        }
+        public double calculateFareForPremium(double distace, double time)
+        {
+            double totalFare = (time < 30) ? (distace * costPerKilometerForPremium) : (distace * costPerKilometerForPremium) + (time * costPerMinuteForPremium);
+            return (totalFare < minFareForPremium) ? minFareForPremium : totalFare;
         }
         public double multipleRides(int rides,double[] distace, double[] time)
         {
